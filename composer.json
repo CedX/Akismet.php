@@ -9,10 +9,10 @@
 		{"email": "cedx@outlook.com", "homepage": "https://cedric-belin.fr", "name": "Cédric Belin"}
 	],
 	"autoload": {
-		"psr-4": {"Belin\\Akismet\\": "src/"}
+		"psr-4": {"Belin\\Akismet\\": "Sources/"}
 	},
 	"autoload-dev": {
-		"psr-4": {"Belin\\Akismet\\": "test/"}
+		"psr-4": {"Belin\\Akismet\\": "Tests/"}
 	},
 	"config": {
 		"platform-check": false
@@ -38,7 +38,7 @@
 		"phpunit/phpunit": "^13.1.10"
 	},
 	"support": {
-		"docs": "https://github.com/CedX/Akismet.php/tree/main/docs",
+		"docs": "https://github.com/CedX/Akismet.php/tree/main/Documentation",
 		"issues": "https://github.com/CedX/Akismet.php/issues"
 	}
 }

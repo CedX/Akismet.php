@@ -66,5 +66,5 @@ catch (RuntimeException $e) {
 }
 ```
 
-See the [source code](https://github.com/CedX/Akismet.php/tree/main/src) for detailed information
+See the [source code](https://github.com/CedX/Akismet.php/tree/main/Sources) for detailed information
 about the `Author` and `Comment` classes, and their properties.
