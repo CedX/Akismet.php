@@ -5,7 +5,7 @@
 function Install-ComposerPackage {
 	param (
 		# The package to install.
-		[Parameter(Position = 0)]
+		[Parameter(Position = 1)]
 		[string] $Package
 	)
 
@@ -21,7 +21,7 @@ function Install-ComposerPackage {
 function Invoke-PhpStan {
 	param (
 		# The path to the configuration file.
-		[Parameter(Position = 0)]
+		[Parameter(Position = 1)]
 		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified configuration file does not exist.")]
 		[string] $Configuration,
 
@@ -43,7 +43,7 @@ function Invoke-PhpStan {
 function Invoke-PhpUnit {
 	param (
 		# The path to the configuration file.
-		[Parameter(Position = 0)]
+		[Parameter(Position = 1)]
 		[ValidateScript({ Test-Path $_ -PathType Leaf }, ErrorMessage = "The specified configuration file does not exist.")]
 		[string] $Configuration
 	)
@@ -60,7 +60,7 @@ function Invoke-PhpUnit {
 function New-GitTag {
 	param (
 		# The tag name.
-		[Parameter(Mandatory, Position = 0)]
+		[Parameter(Mandatory, Position = 1)]
 		[string] $Name
 	)
 
@@ -89,7 +89,7 @@ function Test-PSResourceUpdate {
 	[OutputType([psobject])]
 	param (
 		# The PowerShell module to be checked.
-		[Parameter(Mandatory, Position = 0, ValueFromPipeline)]
+		[Parameter(Mandatory, Position = 1, ValueFromPipeline)]
 		[Microsoft.PowerShell.PSResourceGet.UtilClasses.PSResourceInfo] $InputObject
 	)
 
@@ -112,7 +112,7 @@ function Test-PSResourceUpdate {
 function Update-ComposerPackage {
 	param (
 		# The package to update.
-		[Parameter(Position = 0)]
+		[Parameter(Position = 1)]
 		[string] $Package
 	)
 
