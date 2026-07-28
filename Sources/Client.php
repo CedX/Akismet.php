@@ -63,7 +63,7 @@ final class Client {
 	 * @throws \RuntimeException The remote server returned an invalid response.
 	 */
 	public function checkComment(Comment $comment): CheckResult {
-		$response = $this->fetch("1.1/comment-check", $comment->jsonSerialize());
+		$response = $this->post("1.1/comment-check", $comment->jsonSerialize());
 		if ($response->body == "false") return CheckResult::Ham;
 		return ($response->headers["x-akismet-pro-tip"] ?? "") == "discard" ? CheckResult::PervasiveSpam : CheckResult::Spam;
 	}
@@ -74,7 +74,7 @@ final class Client {
 	 * @throws \RuntimeException The remote server returned an invalid response.
 	 */
 	public function submitHam(Comment $comment): void {
-		$response = $this->fetch("1.1/submit-ham", $comment->jsonSerialize());
+		$response = $this->post("1.1/submit-ham", $comment->jsonSerialize());
 		if ($response->body != self::Success) throw new \RuntimeException("Invalid server response.", 500);
 	}
 
@@ -84,7 +84,7 @@ final class Client {
 	 * @throws \RuntimeException The remote server returned an invalid response.
 	 */
 	public function submitSpam(Comment $comment): void {
-		$response = $this->fetch("1.1/submit-spam", $comment->jsonSerialize());
+		$response = $this->post("1.1/submit-spam", $comment->jsonSerialize());
 		if ($response->body != self::Success) throw new \RuntimeException("Invalid server response.", 500);
 	}
 
@@ -93,7 +93,7 @@ final class Client {
 	 * @return bool `true` if the specified API key is valid, otherwise `false`.
 	 */
 	public function verifyKey(): bool {
-		$response = $this->fetch("1.1/verify-key");
+		$response = $this->post("1.1/verify-key");
 		return $response->body == "valid";
 	}
 
@@ -104,7 +104,7 @@ final class Client {
 	 * @return \stdClass The server response.
 	 * @throws \RuntimeException An error occurred while querying the end point.
 	 */
-	private function fetch(string $endpoint, ?object $fields = null): \stdClass {
+	private function post(string $endpoint, ?object $fields = null): \stdClass {
 		$handle = curl_init($this->baseUrl->withPath("{$this->baseUrl->getPath()}/$endpoint")->toString());
 		if (!$handle) throw new \RuntimeException("Unable to allocate the cURL handle.", 500);
 
