@@ -99,13 +99,13 @@ final class Client {
 
 	/**
 	 * Queries the service by posting the specified fields to a given end point, and returns the response.
-	 * @param string $endpoint The URL of the end point to query.
+	 * @param string $requestUri The relative URI of the end point to query.
 	 * @param object $fields The fields describing the query body.
 	 * @return \stdClass The server response.
 	 * @throws \RuntimeException An error occurred while querying the end point.
 	 */
-	private function post(string $endpoint, ?object $fields = null): \stdClass {
-		$handle = curl_init($this->baseUrl->withPath("{$this->baseUrl->getPath()}/$endpoint")->toString());
+	private function post(string $requestUri, ?object $fields = null): \stdClass {
+		$handle = curl_init($this->baseUrl->withPath("{$this->baseUrl->getPath()}/$requestUri")->toString());
 		if (!$handle) throw new \RuntimeException("Unable to allocate the cURL handle.", 500);
 
 		$postFields = $this->blog->jsonSerialize();
