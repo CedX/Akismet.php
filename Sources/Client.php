@@ -30,6 +30,7 @@ final class Client {
 
 	/**
 	 * The user agent string to use when making requests.
+	 * @var non-empty-string
 	 */
 	public string $userAgent;
 
@@ -116,7 +117,7 @@ final class Client {
 		$headers = [];
 		curl_setopt_array($handle, [
 			CURLOPT_FOLLOWLOCATION => true,
-			CURLOPT_HEADERFUNCTION => function($_, $header) use (&$headers) {
+			CURLOPT_HEADERFUNCTION => function(\CurlHandle $_, string $header) use (&$headers): int {
 				if (count($parts = explode(":", $header, 2)) == 2) $headers[mb_trim($parts[0]) |> mb_strtolower(...)] = mb_trim($parts[1]);
 				return strlen($header);
 			},
