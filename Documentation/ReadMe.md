@@ -9,7 +9,7 @@ Add Akismet to your [PHP](https://www.php.net) applications so you don't have to
 ## Quick start
 Install the latest version of **Akismet for PHP** with [Composer](https://getcomposer.org) package manager:
 
-```shell
+```powershell
 composer require cedx/akismet
 ```
 

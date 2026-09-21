@@ -6,7 +6,7 @@ and [Composer](https://getcomposer.org), the PHP package manager, up and running
 	
 You can verify if you're already good to go with the following commands:
 
-```shell
+```powershell
 php --version
 # PHP 8.5.5 (cli) (built: Apr  7 2026 19:24:35) (NTS Visual C++ 2022 x64)
 
@@ -19,7 +19,7 @@ composer --version
 ### 1. Install it
 From a command prompt, run:
 
-```shell
+```powershell
 composer require cedx/akismet
 ```
 
