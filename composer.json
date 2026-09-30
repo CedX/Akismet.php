@@ -35,7 +35,7 @@
 	},
 	"require-dev": {
 		"phpstan/phpstan": "^2.2.16",
-		"phpunit/phpunit": "^13.3.5"
+		"phpunit/phpunit": "^13.3.6"
 	},
 	"support": {
 		"docs": "https://github.com/CedX/Akismet.php/tree/main/Documentation",
