@@ -6,7 +6,7 @@ use Uri\Rfc3986\Uri;
 /**
  * Submits comments to the [Akismet](https://akismet.com) service.
  */
-final class Client {
+class Client {
 
 	/**
 	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.

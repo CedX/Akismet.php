@@ -4,7 +4,7 @@ namespace Belin\Akismet;
 /**
  * Provides API usage for a given month.
  */
-final class Usage {
+class Usage {
 
 	/**
 	 * The number of monthly API calls your plan entitles you to.

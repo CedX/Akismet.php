@@ -9,7 +9,7 @@ use function PHPUnit\Framework\{assertCount, assertEquals};
  * Tests the features of the {@see Blog} class.
  */
 #[TestDox("Blog")]
-final class BlogTests extends TestCase {
+class BlogTests extends TestCase {
 
 	#[Test, TestDox("jsonSerialize()")]
 	public function jsonSerialize(): void {
