@@ -66,7 +66,7 @@ class Should {
 	 * @return \Closure The closure that tests whether the given sequence contains the specified value.
 	 */
 	public static function beOneOf(iterable $sequence): \Closure {
-		return static fn(mixed $expected) => Assert::assertContains($expected, $sequence);
+		return static fn(mixed $value) => Assert::assertContains($value, $sequence);
 	}
 
 	/**
