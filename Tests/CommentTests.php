@@ -3,7 +3,6 @@ namespace Belin\Akismet;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\{Test, TestDox};
-use function PHPUnit\Framework\{assertCount, assertEquals};
 
 /**
  * Tests the features of the {@see Comment} class.
@@ -15,8 +14,8 @@ class CommentTests extends TestCase {
 	public function jsonSerialize(): void {
 		// It should return only the author info with a newly created instance.
 		$json = new Comment(author: new Author(ipAddress: "127.0.0.1"))->jsonSerialize();
-		assertCount(1, get_object_vars($json));
-		assertEquals("127.0.0.1", $json->user_ip);
+		get_object_vars($json) |> count(...) |> Should::be(1);
+		$json->user_ip |> Should::be("127.0.0.1");
 
 		// It should return a non-empty map with a initialized instance.
 		$json = new Comment(
@@ -27,13 +26,13 @@ class CommentTests extends TestCase {
 			type: CommentType::BlogPost
 		)->jsonSerialize();
 
-		assertCount(7, get_object_vars($json));
-		assertEquals("Cédric Belin", $json->comment_author);
-		assertEquals("A user comment.", $json->comment_content);
-		assertEquals("2000-01-01T00:00:00+00:00", $json->comment_date_gmt);
-		assertEquals("blog-post", $json->comment_type);
-		assertEquals("https://cedric-belin.fr", $json->referrer);
-		assertEquals("Doom/6.6.6", $json->user_agent);
-		assertEquals("127.0.0.1", $json->user_ip);
+		get_object_vars($json) |> count(...) |> Should::be(7);
+		$json->comment_author |> Should::be("Cédric Belin");
+		$json->comment_content |> Should::be("A user comment.");
+		$json->comment_date_gmt |> Should::be("2000-01-01T00:00:00+00:00");
+		$json->comment_type |> Should::be("blog-post");
+		$json->referrer |> Should::be("https://cedric-belin.fr");
+		$json->user_agent |> Should::be("Doom/6.6.6");
+		$json->user_ip |> Should::be("127.0.0.1");
 	}
 }

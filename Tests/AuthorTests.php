@@ -3,7 +3,6 @@ namespace Belin\Akismet;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\{Test, TestDox};
-use function PHPUnit\Framework\{assertCount, assertEquals};
 
 /**
  * Tests the features of the {@see Author} class.
@@ -15,8 +14,8 @@ class AuthorTests extends TestCase {
 	public function jsonSerialize(): void {
 		// It should return only the IP address with a newly created instance.
 		$json = new Author(ipAddress: "127.0.0.1")->jsonSerialize();
-		assertCount(1, get_object_vars($json));
-		assertEquals("127.0.0.1", $json->user_ip);
+		get_object_vars($json) |> count(...) |> Should::be(1);
+		$json->user_ip |> Should::be("127.0.0.1");
 
 		// It should return a non-empty map with a initialized instance.
 		$json = new Author(
@@ -27,11 +26,11 @@ class AuthorTests extends TestCase {
 			userAgent: "Mozilla/5.0"
 		)->jsonSerialize();
 
-		assertCount(5, get_object_vars($json));
-		assertEquals("Cédric Belin", $json->comment_author);
-		assertEquals("contact@cedric-belin.fr", $json->comment_author_email);
-		assertEquals("https://cedric-belin.fr", $json->comment_author_url);
-		assertEquals("Mozilla/5.0", $json->user_agent);
-		assertEquals("192.168.0.1", $json->user_ip);
+		get_object_vars($json) |> count(...) |> Should::be(5);
+		$json->comment_author |> Should::be("Cédric Belin");
+		$json->comment_author_email |> Should::be("contact@cedric-belin.fr");
+		$json->comment_author_url |> Should::be("https://cedric-belin.fr");
+		$json->user_agent |> Should::be("Mozilla/5.0");
+		$json->user_ip |> Should::be("192.168.0.1");
 	}
 }

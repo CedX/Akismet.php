@@ -3,7 +3,6 @@ namespace Belin\Akismet;
 
 use PHPUnit\Framework\{Assert, TestCase};
 use PHPUnit\Framework\Attributes\{Before, Test, TestDox};
-use function PHPUnit\Framework\{assertEquals, assertFalse, assertTrue};
 
 /**
  * Tests the features of the {@see Client} class.
@@ -29,43 +28,30 @@ class ClientTests extends TestCase {
 	#[Test, TestDox("checkComment()")]
 	public function checkComment(): void {
 		// It should return `CheckResult::ham` for valid comment (e.g. ham).
-		assertEquals(CheckResult::Ham, $this->client->checkComment($this->ham));
+		$this->client->checkComment($this->ham) |> Should::be(CheckResult::Ham);
 
 		// It should return `CheckResult::spam` for invalid comment (e.g. spam).
-		$result = $this->client->checkComment($this->spam);
-		assertTrue($result == CheckResult::Spam || $result == CheckResult::PervasiveSpam);
+		$this->client->checkComment($this->spam) |> Should::beOneOf([CheckResult::Spam, CheckResult::PervasiveSpam]);
 	}
 
 	#[Test, TestDox("submitHam()")]
 	public function submitHam(): void {
-		try {
-			$this->client->submitHam($this->ham);
-			assertTrue(true); // @phpstan-ignore function.alreadyNarrowedType
-		}
-		catch (\Throwable $e) {
-			Assert::fail($e->getMessage());
-		}
+		(fn() => $this->client->submitHam($this->ham)) |> Should::notThrow();
 	}
 
 	#[Test, TestDox("submitSpam()")]
 	public function submitSpam(): void {
-		try {
-			$this->client->submitSpam($this->spam);
-			assertTrue(true); // @phpstan-ignore function.alreadyNarrowedType
-		}
-		catch (\Throwable $e) {
-			Assert::fail($e->getMessage());
-		}
+		(fn() => $this->client->submitSpam($this->spam)) |> Should::notThrow();
 	}
 
 	#[Test, TestDox("verifyKey()")]
 	public function verifyKey(): void {
 		// It should return `true` for a valid API key.
-		assertTrue($this->client->verifyKey());
+		$this->client->verifyKey() |> Should::beTrue();
 
 		// It should return `false` for an invalid API key.
 		$client = new Client(apiKey: "0123456789AB", blog: $this->client->blog, isTest: true);
-		assertFalse($client->verifyKey());
+		$client->verifyKey() |> Should::beFalse();
 	}
 
 	#[Before]

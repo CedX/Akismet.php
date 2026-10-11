@@ -3,7 +3,6 @@ namespace Belin\Akismet;
 
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\{Test, TestDox};
-use function PHPUnit\Framework\{assertCount, assertEquals};
 
 /**
  * Tests the features of the {@see Blog} class.
@@ -15,14 +14,14 @@ class BlogTests extends TestCase {
 	public function jsonSerialize(): void {
 		// It should return only the blog URL with a newly created instance.
 		$json = new Blog("https://github.com/CedX/Akismet.php")->jsonSerialize();
-		assertCount(1, get_object_vars($json));
-		assertEquals("https://github.com/CedX/Akismet.php", $json->blog);
+		get_object_vars($json) |> count(...) |> Should::be(1);
+		$json->blog |> Should::be("https://github.com/CedX/Akismet.php");
 
 		// It should return a non-empty map with a initialized instance.
 		$json = new Blog(charset: "UTF-8", languages: ["en", "fr"], url: "https://github.com/CedX/Akismet.php")->jsonSerialize();
-		assertCount(3, get_object_vars($json));
-		assertEquals("https://github.com/CedX/Akismet.php", $json->blog);
-		assertEquals("UTF-8", $json->blog_charset);
-		assertEquals("en,fr", $json->blog_lang);
+		get_object_vars($json) |> count(...) |> Should::be(3);
+		$json->blog |> Should::be("https://github.com/CedX/Akismet.php");
+		$json->blog_charset |> Should::be("UTF-8");
+		$json->blog_lang |> Should::be("en,fr");
 	}
 }
