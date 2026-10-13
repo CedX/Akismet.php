@@ -11,7 +11,7 @@ class Client {
 	/**
 	 * The response returned by the `submit-ham` and `submit-spam` endpoints when the outcome is a success.
 	 */
-	private const string Success = "Thanks for making the web a better place.";
+	private const string Thanks = "Thanks for making the web a better place.";
 
 	/**
 	 * The base URL of the remote API endpoint.
@@ -76,7 +76,7 @@ class Client {
 	 */
 	public function submitHam(Comment $comment): void {
 		$response = $this->post("1.1/submit-ham", $comment->jsonSerialize());
-		if ($response->body != self::Success) throw new \RuntimeException("Invalid server response.", 500);
+		if ($response->body != self::Thanks) throw new \RuntimeException("Invalid server response.", 500);
 	}
 
 	/**
@@ -86,7 +86,7 @@ class Client {
 	 */
 	public function submitSpam(Comment $comment): void {
 		$response = $this->post("1.1/submit-spam", $comment->jsonSerialize());
-		if ($response->body != self::Success) throw new \RuntimeException("Invalid server response.", 500);
+		if ($response->body != self::Thanks) throw new \RuntimeException("Invalid server response.", 500);
 	}
 
 	/**
