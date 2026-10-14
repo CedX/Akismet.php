@@ -1,31 +1,35 @@
 # Changelog
 
-## Version [17.0.0](https://github.com/CedX/Akismet.php/compare/v16.0.0...17.0.0)
+## Version [2026.10.0](https://github.com/CedX/Akismet.php/compare/v17.0.0...v2026.10.0)
+- Removed the `final` modifier from the classes.
+- Switched to a year-based versioning.
+
+## Version [17.0.0](https://github.com/CedX/Akismet.php/compare/v16.0.0...v17.0.0)
 - Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: removed the `fromJson()` static methods.
 - Breaking change: renamed the root namespace to `Belin\Akismet`.
 - Breaking change: using PHP 8.5 features, like the `Uri\Rfc3986\Uri` class.
 - Removed the dependency on [nyholm/psr7](https://github.com/Nyholm/psr7) library.
 
-## Version [16.0.0](https://github.com/CedX/Akismet.php/compare/v15.1.0...16.0.0)
+## Version [16.0.0](https://github.com/CedX/Akismet.php/compare/v15.1.0...v16.0.0)
 - Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: removed the `ClientException` class.
 - Removed the dependency on [PSR-18 interfaces](https://www.php-fig.org/psr/psr-18).
 
-## Version [15.1.0](https://github.com/CedX/Akismet.php/compare/v15.0.1...15.1.0)
+## Version [15.1.0](https://github.com/CedX/Akismet.php/compare/v15.0.1...v15.1.0)
 - Updated the package dependencies.
 
-## Version [15.0.1](https://github.com/CedX/Akismet.php/compare/v15.0.0...15.0.1)
+## Version [15.0.1](https://github.com/CedX/Akismet.php/compare/v15.0.0...v15.0.1)
 - Fixed a regression in the `Client->verifyKey()` method that called a wrong endpoint.
 
-## Version [15.0.0](https://github.com/CedX/Akismet.php/compare/v14.1.0...15.0.0)
+## Version [15.0.0](https://github.com/CedX/Akismet.php/compare/v14.1.0...v15.0.0)
 - Breaking change: lowercased the `Akismet` namespace.
 - Updated the package dependencies.
 
-## Version [14.1.0](https://github.com/CedX/Akismet.php/compare/v14.0.0...14.1.0)
+## Version [14.1.0](https://github.com/CedX/Akismet.php/compare/v14.0.0...v14.1.0)
 - Dropped the dependency on [Symfony HTTP Client](https://symfony.com/doc/current/http_client.html).
 
-## Version [14.0.0](https://github.com/CedX/Akismet.php/compare/v13.0.0...14.0.0)
+## Version [14.0.0](https://github.com/CedX/Akismet.php/compare/v13.0.0...v14.0.0)
 - Breaking change: changed the signature of the class constructors.
 - Breaking change: raised the required [PHP](https://www.php.net) version.
 - Breaking change: removed the `RequestEvent` and `ResponseEvent` classes.
