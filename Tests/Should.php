@@ -97,6 +97,15 @@ class Should {
 	}
 
 	/**
+	 * Tests whether the specified string matches the given regular expression.
+	 * @param non-empty-string $pattern The regular expression to match.
+	 * @return \Closure The closure that tests whether the specified string matches the given regular expression.
+	 */
+	public static function matchRegex(string $pattern): \Closure {
+		return static fn(string $value) => Assert::assertDoesNotMatchRegularExpression($pattern, $value);
+	}
+
+	/**
 	 * Tests whether the specified values are unequal.
 	 * @param mixed $notExpected The value not expected by the test.
 	 * @return \Closure The closure that tests whether the actual value does not equal the expected value.
@@ -111,6 +120,15 @@ class Should {
 	 */
 	public static function notBeNull(mixed $value): \Closure {
 		return static fn(mixed $value) => Assert::assertNotNull($value);
+	}
+
+	/**
+	 * Tests whether the specified string does not match the given regular expression.
+	 * @param non-empty-string $pattern The regular expression to not match.
+	 * @return \Closure The closure that tests whether the specified string does not match the given regular expression.
+	 */
+	public static function notMatchRegex(string $pattern): \Closure {
+		return static fn(string $value) => Assert::assertMatchesRegularExpression($pattern, $value);
 	}
 
 	/**
