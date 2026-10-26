@@ -2,4 +2,4 @@
 require_once __DIR__."/Tools.php";
 
 writeOutput("Checking for outdated dependencies...");
-startProcess("composer outdated");
+startProcess("composer", "outdated");

@@ -2,4 +2,4 @@
 require_once __DIR__."/Tools.php";
 
 writeOutput("Installing the dependencies...");
-startProcess("composer install");
+startProcess("composer", "install");

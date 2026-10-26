@@ -42,9 +42,10 @@ function removeItem(string $path): bool {
 /**
  * Invokes the specified command.
  * @param string $command The command to invoke.
+ * @param string $arguments The command arguments.
  */
-function startProcess(string $command): void {
-	passthru($command, $exitCode);
+function startProcess(string $command, string $arguments = ""): void {
+	passthru(rtrim("$command $arguments"), $exitCode);
 	if ($exitCode) {
 		fwrite(STDERR, "Command failed: $command" . PHP_EOL);
 		exit($exitCode);
