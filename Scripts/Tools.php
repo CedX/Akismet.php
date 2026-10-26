@@ -5,8 +5,6 @@
  * @param string $path The path of the directory to clean.
  */
 function clearItem(string $path): void {
-	if (!is_dir($path)) return;
-
 	/** @var SplFileInfo $entry */
 	foreach (new FilesystemIterator($path) as $entry)
 		if ($entry->getFilename() != ".gitkeep") removeItem($entry->getPathname());
@@ -27,7 +25,6 @@ function getVersion(): string {
  * @return bool `true` if the file system entry has been deleted, otherwise `false`.
  */
 function removeItem(string $path): bool {
-	if (!file_exists($path)) return false;
 	if (!is_dir($path)) return unlink($path);
 
 	/** @var SplFileInfo $entry */
