@@ -15,8 +15,8 @@ try {
 	);
 
 	$client->submitSpam($comment);
-	print "The comment was successfully submitted as spam.";
+	echo "The comment was successfully submitted as spam.";
 }
 catch (RuntimeException $e) {
-	print "An error occurred: {$e->getMessage()}";
+	echo "An error occurred: {$e->getMessage()}";
 }

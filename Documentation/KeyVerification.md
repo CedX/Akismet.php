@@ -33,10 +33,10 @@ try {
   $client = new Client("123YourAPIKey", $blog);
 
   $isValid = $client->verifyKey();
-  print $isValid ? "The API key is valid." : "The API key is invalid.";
+  echo $isValid ? "The API key is valid." : "The API key is invalid.";
 }
 catch (RuntimeException $e) {
-  print "An error occurred: {$e->getMessage()}";
+  echo "An error occurred: ", $e->getMessage();
 }
 ```
 

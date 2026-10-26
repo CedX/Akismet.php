@@ -46,9 +46,9 @@ try {
   );
 
   $client->submitHam($comment);
-  print "The comment was successfully submitted as ham.";
+  echo "The comment was successfully submitted as ham.";
 }
 catch (RuntimeException $e) {
-  print "An error occurred: {$e->getMessage()}";
+  echo "An error occurred: ", $e->getMessage();
 }
 ```

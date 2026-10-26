@@ -26,8 +26,8 @@ try {
 	);
 
 	$result = new Client("123YourAPIKey", $blog)->checkComment($comment);
-	print $result == CheckResult::Ham ? "The comment is ham." : "The comment is spam.";
+	echo $result == CheckResult::Ham ? "The comment is ham." : "The comment is spam.";
 }
 catch (RuntimeException $e) {
-	print "An error occurred: {$e->getMessage()}";
+	echo "An error occurred: {$e->getMessage()}";
 }

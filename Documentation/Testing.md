@@ -24,7 +24,7 @@ $comment = new Comment(
 
 $blog = new Blog("https://www.yourblog.com");
 $result = new Client("123YourAPIKey", $blog)->checkComment($comment);
-print "It should be 'CheckResult::Spam': {$result->name}";
+echo "It should be 'CheckResult::Spam': {$result->name}";
 ```
 
 ## Simulate a negative result (ham)
@@ -47,7 +47,7 @@ $comment = new Comment(
 
 $blog = new Blog("https://www.yourblog.com");
 $result = new Client("123YourAPIKey", $blog)->checkComment($comment);
-print "It should be 'CheckResult::Ham': {$result->name}";
+echo "It should be 'CheckResult::Ham': {$result->name}";
 ```
 
 ## Automated testing
