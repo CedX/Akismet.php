@@ -56,5 +56,5 @@ function startProcess(string $command): void {
  * @param string $message The message to print.
  */
 function writeOutput(string $message): void {
-	echo $message, PHP_EOL;
+	fwrite(STDOUT, $message . PHP_EOL);
 }
