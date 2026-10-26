@@ -45,9 +45,10 @@ function removeItem(string $path): bool {
  * @param string $arguments The command arguments.
  */
 function startProcess(string $command, string $arguments = ""): void {
-	passthru(rtrim("$command $arguments"), $exitCode);
+	$commandLine = mb_rtrim("$command $arguments");
+	passthru($commandLine, $exitCode);
 	if ($exitCode) {
-		fwrite(STDERR, "Command failed: $command" . PHP_EOL);
+		fwrite(STDERR, "Command failed: $commandLine" . PHP_EOL);
 		exit($exitCode);
 	}
 }
