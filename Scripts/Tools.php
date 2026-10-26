@@ -44,10 +44,17 @@ function removeItem(string $path): bool {
 function startProcess(string $command, string $arguments = ""): void {
 	$commandLine = mb_rtrim("$command $arguments");
 	passthru($commandLine, $exitCode);
-	if ($exitCode) {
-		fwrite(STDERR, "Command failed: $commandLine" . PHP_EOL);
-		exit($exitCode);
-	}
+	if ($exitCode) writeError("Command failed: $commandLine", $exitCode);
+}
+
+/**
+ * Prints the specified message to the standard error.
+ * @param string $message The message to print.
+ * @param int $exitCode The exit code to eventually return to the operating system.
+ */
+function writeError(string $message, int $exitCode = 0): void {
+	fwrite(STDERR, $message . PHP_EOL);
+	if ($exitCode) exit($exitCode);
 }
 
 /**
