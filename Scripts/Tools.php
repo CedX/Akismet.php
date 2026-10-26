@@ -7,9 +7,9 @@
 function clearItem(string $path): void {
 	if (!is_dir($path)) return;
 
-	/** @var SplFileInfo $fileInfo */
-	foreach (new FilesystemIterator($path) as $fileInfo)
-		if ($fileInfo->getFilename() != ".gitkeep") removeItem($fileInfo->getPathname());
+	/** @var SplFileInfo $entry */
+	foreach (new FilesystemIterator($path) as $entry)
+		if ($entry->getFilename() != ".gitkeep") removeItem($entry->getPathname());
 }
 
 /**
@@ -30,10 +30,10 @@ function removeItem(string $path): bool {
 	if (!file_exists($path)) return false;
 	if (!is_dir($path)) return unlink($path);
 
-	/** @var SplFileInfo $fileInfo */
-	foreach (new FilesystemIterator($path) as $fileInfo) {
-		if ($fileInfo->isDir()) removeItem($fileInfo->getPathname());
-		else unlink($fileInfo->getPathname());
+	/** @var SplFileInfo $entry */
+	foreach (new FilesystemIterator($path) as $entry) {
+		if ($entry->isDir()) removeItem($entry->getPathname());
+		else unlink($entry->getPathname());
 	}
 
 	return rmdir($path);
