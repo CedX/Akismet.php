@@ -10,5 +10,5 @@ try {
 	echo $isValid ? "The API key is valid." : "The API key is invalid.";
 }
 catch (RuntimeException $e) {
-	echo "An error occurred: {$e->getMessage()}";
+	echo "An error occurred: ", $e->getMessage();
 }

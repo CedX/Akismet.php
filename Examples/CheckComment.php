@@ -29,5 +29,5 @@ try {
 	echo $result == CheckResult::Ham ? "The comment is ham." : "The comment is spam.";
 }
 catch (RuntimeException $e) {
-	echo "An error occurred: {$e->getMessage()}";
+	echo "An error occurred: ", $e->getMessage();
 }

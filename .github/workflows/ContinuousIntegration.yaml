@@ -1,10 +1,6 @@
 name: ContinuousIntegration
 on: push
 
-defaults:
-  run:
-    shell: pwsh
-
 jobs:
   Test:
     runs-on: windows-latest
@@ -18,8 +14,8 @@ jobs:
           extensions: curl, intl, mbstring, simplexml
           php-version: latest
       - name: Install dependencies
-        run: ./Invoke.ps1 Install
+        run: php Scripts/Install.php
       - name: Run tests
-        run: ./Invoke.ps1 Test
+        run: php Scripts/Test.php
         env:
           AKISMET_API_KEY: ${{secrets.AKISMET_API_KEY}}
