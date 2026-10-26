@@ -45,7 +45,10 @@ function removeItem(string $path): bool {
  */
 function startProcess(string $command): void {
 	passthru($command, $exitCode);
-	if ($exitCode) exit($exitCode);
+	if ($exitCode) {
+		fwrite(STDERR, "Command failed: $command" . PHP_EOL);
+		exit($exitCode);
+	}
 }
 
 /**
