@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
-require_once "Tools.php";
+require_once __DIR__."/Tools.php";
 
-echo "Deleting all generated files...", PHP_EOL;
-cleanDirectory("Temp");
+writeOutput("Deleting all generated files...");
+clearItem("Temp");

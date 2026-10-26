@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+require_once __DIR__."/Tools.php";
 
-echo "Checking for outdated dependencies...", PHP_EOL;
-passthru("composer outdated");
+writeOutput("Checking for outdated dependencies...");
+startProcess("composer outdated");

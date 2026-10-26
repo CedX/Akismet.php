@@ -1,7 +1,7 @@
 <?php declare(strict_types=1);
-require_once "Tools.php";
+require_once __DIR__."/Tools.php";
 
-echo "Publishing the package...", PHP_EOL;
+writeOutput("Publishing the package...");
 $version = getVersion();
-passthru("git tag v$version");
-passthru("git push origin v$version");
+startProcess("git tag v$version");
+startProcess("git push origin v$version");

@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+require_once __DIR__."/Tools.php";
 
-echo "Running the test suite...", PHP_EOL;
-passthru("composer exec -- phpunit --configuration=Configuration/PHPUnit.xml");
+writeOutput("Running the test suite...");
+startProcess("composer exec -- phpunit --configuration=Configuration/PHPUnit.xml");

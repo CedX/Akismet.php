@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+require_once __DIR__."/Tools.php";
 
-echo "Installing the dependencies...", PHP_EOL;
-passthru("composer install");
+writeOutput("Installing the dependencies...");
+startProcess("composer install");

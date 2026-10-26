@@ -1,4 +1,5 @@
 <?php declare(strict_types=1);
+require_once __DIR__."/Tools.php";
 
-echo "Updating the dependencies...", PHP_EOL;
-passthru("composer update");
+writeOutput("Updating the dependencies...");
+startProcess("composer update");
