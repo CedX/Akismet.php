@@ -51,7 +51,7 @@ function startProcess(string $command, string $arguments = ""): void {
  * Prints the specified message to the standard error and terminates the process.
  * @param string $message The message to print.
  */
-function writeError(string $message): void {
+function writeError(string $message): never {
 	fwrite(STDERR, $message . PHP_EOL);
 	exit(1);
 }
