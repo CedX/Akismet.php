@@ -2,4 +2,4 @@
 require_once __DIR__."/Tools.php";
 
 writeOutput("Updating the dependencies...");
-startProcess("composer", "update");
+startProcess("composer", "update --ansi");
