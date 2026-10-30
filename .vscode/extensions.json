@@ -1,7 +1,6 @@
 {
 	"recommendations": [
 		"bmewburn.vscode-intelephense-client",
-		"humao.rest-client",
-		"ms-vscode.powershell"
+		"humao.rest-client"
 	]
 }
