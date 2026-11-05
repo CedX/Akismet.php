@@ -159,7 +159,7 @@ class Should {
 	 */
 	public static function throw(string $exceptionType = \Throwable::class): \Closure {
 		return static function(callable $action) use ($exceptionType) {
-			try { $action(); Assert::fail(); }
+			try { $action(); Assert::fail("The specified action did not throw any exception."); }
 			catch (\Throwable $ex) { Assert::assertInstanceOf($exceptionType, $ex); }
 		};
 	}
