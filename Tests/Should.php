@@ -133,13 +133,13 @@ class Should {
 
 	/**
 	 * Tests whether the specified action does not throw an exception of the expected type.
-	 * @param class-string<\Throwable> $expectedType The type of exception expected to not be thrown.
+	 * @param class-string<\Throwable> $exceptionType The type of exception expected to not be thrown.
 	 * @return \Closure The closure that tests whether the specified action does not throw an exception of the expected type.
 	 */
-	public static function notThrow(string $expectedType = \Throwable::class): \Closure {
-		return static function(callable $action) use ($expectedType) {
+	public static function notThrow(string $exceptionType = \Throwable::class): \Closure {
+		return static function(callable $action) use ($exceptionType) {
 			try { $action(); Assert::assertTrue(true); } // @phpstan-ignore staticMethod.alreadyNarrowedType
-			catch (\Throwable $ex) { Assert::assertNotInstanceOf($expectedType, $ex); } // @phpstan-ignore staticMethod.impossibleType
+			catch (\Throwable $ex) { Assert::assertNotInstanceOf($exceptionType, $ex); } // @phpstan-ignore staticMethod.impossibleType
 		};
 	}
 
@@ -154,13 +154,13 @@ class Should {
 
 	/**
 	 * Tests whether the specified action throws an exception of the expected type.
-	 * @param class-string<\Throwable> $expectedType The type of exception expected to be thrown.
+	 * @param class-string<\Throwable> $exceptionType The type of exception expected to be thrown.
 	 * @return \Closure The closure that tests whether the specified action throws an exception of the expected type.
 	 */
-	public static function throw(string $expectedType = \Throwable::class): \Closure {
-		return static function(callable $action) use ($expectedType) {
+	public static function throw(string $exceptionType = \Throwable::class): \Closure {
+		return static function(callable $action) use ($exceptionType) {
 			try { $action(); Assert::fail(); }
-			catch (\Throwable $ex) { Assert::assertInstanceOf($expectedType, $ex); }
+			catch (\Throwable $ex) { Assert::assertInstanceOf($exceptionType, $ex); }
 		};
 	}
 }
