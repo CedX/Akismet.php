@@ -90,6 +90,7 @@ class Should {
 			"double", "float", "real" => static fn(mixed $value) => Assert::assertIsFloat($value),
 			"int", "integer" => static fn(mixed $value) => Assert::assertIsInt($value),
 			"iterable" => static fn(mixed $value) => Assert::assertIsIterable($value),
+			"list" => static fn(mixed $value) => Assert::assertIsList($value),
 			"object" => static fn(mixed $value) => Assert::assertIsObject($value),
 			"resource" => static fn(mixed $value) => Assert::assertIsResource($value),
 			"string" => static fn(mixed $value) => Assert::assertIsString($value),
