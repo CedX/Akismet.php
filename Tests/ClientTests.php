@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 namespace Belin\Akismet;
 
-use PHPUnit\Framework\{Assert, TestCase};
+use Belin\Should\Should;
+use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\{Before, Test, TestDox};
 
 /**
