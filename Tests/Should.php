@@ -34,6 +34,42 @@ class Should {
 	}
 
 	/**
+	 * Tests whether the given value is greater than the specified lower bound.
+	 * @param mixed $lowerBound The lower bound value that the value should exceed.
+	 * @return \Closure The closure that tests whether the given value is greater than the specified lower bound.
+	 */
+	public static function beGreaterThan(mixed $lowerBound): \Closure {
+		return static fn(mixed $value) => Assert::assertGreaterThan($lowerBound, $value);
+	}
+
+	/**
+	 * Tests whether the given value is greater than or equal to the specified lower bound.
+	 * @param mixed $lowerBound The lower bound value that the value should exceed.
+	 * @return \Closure The closure that tests whether the given value is greater than or equal to the specified lower bound.
+	 */
+	public static function beGreaterThanOrEqualTo(mixed $lowerBound): \Closure {
+		return static fn(mixed $value) => Assert::assertGreaterThanOrEqual($lowerBound, $value);
+	}
+
+	/**
+	 * Tests whether the given value is less than the specified upper bound.
+	 * @param mixed $upperBound The upper bound value that the value should exceed.
+	 * @return \Closure The closure that tests whether the given value is less than the specified upper bound.
+	 */
+	public static function beLessThan(mixed $upperBound): \Closure {
+		return static fn(mixed $value) => Assert::assertLessThan($upperBound, $value);
+	}
+
+	/**
+	 * Tests whether the given value is less than or equal to the specified upper bound.
+	 * @param mixed $upperBound The upper bound value that the value should exceed.
+	 * @return \Closure The closure that tests whether the given value is less than or equal to the specified upper bound.
+	 */
+	public static function beLessThanOrEqualTo(mixed $upperBound): \Closure {
+		return static fn(mixed $value) => Assert::assertLessThanOrEqual($upperBound, $value);
+	}
+
+	/**
 	 * Tests whether the specified value is `null`.
 	 * @return \Closure The closure that tests whether the specified value is `null`.
 	 */
@@ -88,6 +124,24 @@ class Should {
 	}
 
 	/**
+	 * Tests whether the specified collection contains the given element.
+	 * @param mixed $expected The expected item.
+	 * @return \Closure The closure that tests whether the specified collection contains the given element.
+	 */
+	public static function contain(mixed $expected): \Closure {
+		return static fn(iterable $collection) => Assert::assertContains($expected, $collection);
+	}
+
+	/**
+	 * Tests whether the specified string contains the given substring.
+	 * @param string $substring The string expected to occur within the specified string.
+	 * @return \Closure The closure that tests whether the specified string contains the given substring.
+	 */
+	public static function containString(string $substring): \Closure {
+		return static fn(string $value) => Assert::assertStringContainsString($substring, $value);
+	}
+
+	/**
 	 * Tests whether the specified string ends with the given suffix.
 	 * @param non-empty-string $expectedSuffix The string expected to be a suffix of the tested value.
 	 * @return \Closure The closure that tests whether the specified string ends with the given suffix.
@@ -120,6 +174,24 @@ class Should {
 	 */
 	public static function notBeNull(mixed $value): \Closure {
 		return static fn(mixed $value) => Assert::assertNotNull($value);
+	}
+
+	/**
+	 * Tests whether the specified collection does not contain the given element.
+	 * @param mixed $expected The unexpected item.
+	 * @return \Closure The closure that tests whether the specified collection does not contain the given element.
+	 */
+	public static function notContain(mixed $expected): \Closure {
+		return static fn(iterable $collection) => Assert::assertNotContains($expected, $collection);
+	}
+
+	/**
+	 * Tests whether the specified string does not contain the given substring.
+	 * @param string $substring The string expected to not occur within the specified string.
+	 * @return \Closure The closure that tests whether the specified string does not contain the given substring.
+	 */
+	public static function notContainString(string $substring): \Closure {
+		return static fn(string $value) => Assert::assertStringNotContainsString($substring, $value);
 	}
 
 	/**
